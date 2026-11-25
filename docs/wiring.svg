@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -50 800 600" width="800" height="600" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <!-- Wiring of the conveyor (lesson 6.5). Same pins as main/main.c and diagram.json. -->
+  <rect x="0" y="-50" width="800" height="600" rx="16" fill="#ffffff"/>
+  <text x="24" y="-18" font-size="20" font-weight="700" fill="#202124">Conveyor with E-stop — wiring</text>
+  <text x="24" y="2" font-size="13" fill="#5f6368">ESP32-S3 DevKit · buttons to GND (internal pull-ups) · LED 220 Ω · pot 10 kΩ as the ADC sensor</text>
+
+  <!-- ===== Board ===== -->
+  <rect x="320" y="30" width="180" height="480" rx="10" fill="#1f2a36"/>
+  <rect x="378" y="40" width="64" height="20" rx="2" fill="#2c3a48"/>            <!-- antenna -->
+  <rect x="372" y="62" width="76" height="120" rx="4" fill="#b8bec6"/>          <!-- module shield -->
+  <text x="410" y="118" font-size="10" fill="#3c4043" text-anchor="middle" font-weight="700">ESP32-S3</text>
+  <text x="410" y="132" font-size="9" fill="#3c4043" text-anchor="middle">WROOM-1</text>
+  <rect x="380" y="512" width="34" height="18" rx="3" fill="#9aa0a6"/>          <!-- USB -->
+  <rect x="426" y="512" width="34" height="18" rx="3" fill="#9aa0a6"/>
+  <text x="397" y="545" font-size="9" fill="#5f6368" text-anchor="middle">UART</text>
+  <text x="443" y="545" font-size="9" fill="#5f6368" text-anchor="middle">USB</text>
+
+  <!-- J1 header (left), top to bottom; used pins are bright -->
+  <g font-size="9" fill="#8a96a3">
+    <g fill="#5d6873">
+      <rect x="327" y="65" width="10" height="10"/><rect x="327" y="83" width="10" height="10"/><rect x="327" y="101" width="10" height="10"/><rect x="327" y="119" width="10" height="10"/><rect x="327" y="137" width="10" height="10"/><rect x="327" y="155" width="10" height="10"/><rect x="327" y="173" width="10" height="10"/><rect x="327" y="191" width="10" height="10"/><rect x="327" y="209" width="10" height="10"/><rect x="327" y="227" width="10" height="10"/><rect x="327" y="245" width="10" height="10"/><rect x="327" y="263" width="10" height="10"/><rect x="327" y="281" width="10" height="10"/><rect x="327" y="299" width="10" height="10"/><rect x="327" y="317" width="10" height="10"/><rect x="327" y="335" width="10" height="10"/><rect x="327" y="353" width="10" height="10"/><rect x="327" y="371" width="10" height="10"/><rect x="327" y="389" width="10" height="10"/><rect x="327" y="407" width="10" height="10"/><rect x="327" y="425" width="10" height="10"/><rect x="327" y="443" width="10" height="10"/>
+    </g>
+    <text x="343" y="91">3V3</text><text x="343" y="109">RST</text><text x="343" y="163">6</text><text x="343" y="181">7</text><text x="343" y="199">15</text><text x="343" y="217">16</text><text x="343" y="235">17</text><text x="343" y="253">18</text><text x="343" y="271">8</text><text x="343" y="289">3</text><text x="343" y="307">46</text><text x="343" y="325">9</text><text x="343" y="343">10</text><text x="343" y="361">11</text><text x="343" y="379">12</text><text x="343" y="397">13</text><text x="343" y="415">14</text><text x="343" y="433">5V</text>
+  </g>
+  <!-- J3 header (right) -->
+  <g font-size="9" fill="#8a96a3" text-anchor="end">
+    <g fill="#5d6873">
+      <rect x="483" y="65" width="10" height="10"/><rect x="483" y="83" width="10" height="10"/><rect x="483" y="101" width="10" height="10"/><rect x="483" y="119" width="10" height="10"/><rect x="483" y="137" width="10" height="10"/><rect x="483" y="155" width="10" height="10"/><rect x="483" y="173" width="10" height="10"/><rect x="483" y="191" width="10" height="10"/><rect x="483" y="209" width="10" height="10"/><rect x="483" y="227" width="10" height="10"/><rect x="483" y="245" width="10" height="10"/><rect x="483" y="263" width="10" height="10"/><rect x="483" y="281" width="10" height="10"/><rect x="483" y="299" width="10" height="10"/><rect x="483" y="317" width="10" height="10"/><rect x="483" y="335" width="10" height="10"/><rect x="483" y="353" width="10" height="10"/><rect x="483" y="371" width="10" height="10"/><rect x="483" y="389" width="10" height="10"/><rect x="483" y="407" width="10" height="10"/><rect x="483" y="425" width="10" height="10"/><rect x="483" y="443" width="10" height="10"/>
+    </g>
+    <text x="477" y="91">TX</text><text x="477" y="109">RX</text><text x="477" y="163">42</text><text x="477" y="181">41</text><text x="477" y="199">40</text><text x="477" y="217">39</text><text x="477" y="235">38</text><text x="477" y="253">37</text><text x="477" y="271">36</text><text x="477" y="289">35</text><text x="477" y="325">45</text><text x="477" y="343">48</text><text x="477" y="361">47</text><text x="477" y="379">21</text><text x="477" y="397">20</text><text x="477" y="415">19</text><text x="477" y="433">G</text><text x="477" y="73">G</text>
+  </g>
+  <!-- used pins highlighted: J1 3V3, 4, 5, G; J3 1, 2, 0, G (bottom) -->
+  <g fill="#f9ab00">
+    <rect x="327" y="65" width="10" height="10"/><rect x="327" y="119" width="10" height="10"/><rect x="327" y="137" width="10" height="10"/><rect x="327" y="443" width="10" height="10"/>
+    <rect x="483" y="119" width="10" height="10"/><rect x="483" y="137" width="10" height="10"/><rect x="483" y="299" width="10" height="10"/><rect x="483" y="443" width="10" height="10"/>
+  </g>
+  <g font-size="10" font-weight="700" fill="#ffffff">
+    <text x="343" y="73">3V3</text><text x="343" y="127">4</text><text x="343" y="145">5</text><text x="343" y="451">G</text>
+  </g>
+  <g font-size="10" font-weight="700" fill="#ffffff" text-anchor="end">
+    <text x="477" y="127">1</text><text x="477" y="145">2</text><text x="477" y="307">0</text><text x="477" y="451">G</text>
+  </g>
+
+  <!-- onboard BOOT button (GPIO0) -->
+  <rect x="362" y="470" width="24" height="24" rx="3" fill="#dadce0"/>
+  <circle cx="374" cy="482" r="7" fill="#3c4043"/>
+  <text x="374" y="465" font-size="9" fill="#e8eaed" text-anchor="middle">BOOT</text>
+
+  <!-- ===== Wires ===== -->
+  <g fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M332 70 H300 V20 H600 V34" stroke="#d93025"/>              <!-- 3V3 -> pot top -->
+    <path d="M332 124 H254" stroke="#188038"/>                          <!-- GPIO4 -> BTN1 -->
+    <path d="M332 142 H290 V220 H254" stroke="#e8710a"/>                <!-- GPIO5 -> BTN2 -->
+    <path d="M196 124 H120 V448 H332 M196 220 H120" stroke="#3c4043"/>  <!-- buttons -> GND (J1) -->
+    <path d="M488 124 H560 V62 H584" stroke="#9334e6"/>                 <!-- GPIO1 <- pot wiper -->
+    <path d="M488 142 H530" stroke="#1a73e8"/>                          <!-- GPIO2 -> R -->
+    <path d="M580 142 H620" stroke="#1a73e8"/>                          <!-- R -> LED anode -->
+    <path d="M652 142 H760 M600 90 V100 H760 V448 H488" stroke="#3c4043"/> <!-- LED, pot -> GND (J3) -->
+  </g>
+  <polygon points="594,62 582,56 582,68" fill="#9334e6"/>               <!-- wiper arrow -->
+  <circle cx="120" cy="220" r="6" fill="#3c4043"/>
+  <circle cx="760" cy="142" r="6" fill="#3c4043"/>
+  <g font-size="10" font-weight="700" text-anchor="end">
+    <text x="292" y="62" fill="#d93025">3V3</text>
+    <text x="316" y="118" fill="#188038">GPIO4</text>
+    <text x="284" y="180" fill="#e8710a">GPIO5</text>
+  </g>
+  <g font-size="10" font-weight="700">
+    <text x="504" y="118" fill="#9334e6">GPIO1</text>
+    <text x="504" y="160" fill="#1a73e8">GPIO2</text>
+    <text x="200" y="442" fill="#3c4043">GND</text>
+    <text x="680" y="442" fill="#3c4043">GND</text>
+  </g>
+
+  <!-- ===== Push buttons (normally open, to GND) ===== -->
+  <g stroke="#3c4043" stroke-width="3" fill="#ffffff">
+    <circle cx="200" cy="124" r="4"/><circle cx="250" cy="124" r="4"/>
+    <circle cx="200" cy="220" r="4"/><circle cx="250" cy="220" r="4"/>
+  </g>
+  <g stroke="#3c4043" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M196 110 H254 M225 110 V98"/>
+    <path d="M196 206 H254 M225 206 V194"/>
+  </g>
+  <rect x="213" y="88" width="24" height="10" rx="3" fill="#34a853"/>
+  <rect x="213" y="184" width="24" height="10" rx="3" fill="#ea4335"/>
+  <g font-size="12" font-weight="700" text-anchor="middle">
+    <text x="225" y="148" fill="#188038">BTN1 · parts</text>
+    <text x="225" y="244" fill="#c5221f">BTN2 · E-STOP</text>
+  </g>
+
+  <!-- ===== Potentiometer (vertical resistor + wiper) ===== -->
+  <rect x="593" y="34" width="14" height="56" rx="6" fill="#e8d2a6" stroke="#8d6e3f" stroke-width="1"/>
+  <text x="616" y="50" font-size="12" font-weight="700" fill="#9334e6">Pot 10 kΩ · ADC1_CH0</text>
+  <text x="616" y="66" font-size="10" fill="#5f6368">sensor stand-in</text>
+  <text x="616" y="80" font-size="10" fill="#5f6368">0 … 3.3 V</text>
+
+  <!-- ===== Resistor ===== -->
+  <rect x="530" y="135" width="50" height="14" rx="6" fill="#e8d2a6" stroke="#8d6e3f" stroke-width="1"/>
+  <g fill="#c5221f">
+    <rect x="539" y="135" width="4" height="14"/><rect x="547" y="135" width="4" height="14"/><rect x="555" y="135" width="4" height="14" fill="#5d4037"/>
+  </g>
+  <text x="555" y="166" font-size="10" fill="#5f6368" text-anchor="middle">220 Ω</text>
+
+  <!-- ===== LED: anode from GPIO2 (via R), cathode to GND ===== -->
+  <polygon points="620,130 620,154 648,142" fill="#ea4335" stroke="#c5221f" stroke-width="2"/>
+  <line x1="652" y1="129" x2="652" y2="155" stroke="#c5221f" stroke-width="3"/>
+  <path d="M632 124 l8 -10 M642 124 l8 -10" stroke="#ea4335" stroke-width="2"/>
+  <text x="636" y="172" font-size="12" font-weight="700" fill="#c5221f" text-anchor="middle">ALARM</text>
+
+  <!-- ===== Callout: onboard BOOT ===== -->
+  <path d="M386 482 H520" fill="none" stroke="#9aa0a6" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <g font-size="12" fill="#202124">
+    <text x="526" y="478" font-weight="700">GPIO0 — BOOT button</text>
+    <text x="526" y="494" fill="#5f6368">onboard, also an E-stop (same ISR)</text>
+  </g>
+
+  <!-- ===== What each pin does ===== -->
+  <g font-size="12" fill="#202124">
+    <rect x="520" y="200" width="224" height="200" rx="10" fill="#f1f3f4"/>
+    <text x="536" y="224" font-weight="700">What each pin does</text>
+    <text x="536" y="250" font-weight="700" fill="#188038">GPIO4</text><text x="600" y="250">press → +1 part</text>
+    <text x="536" y="274" font-weight="700" fill="#e8710a">GPIO5</text><text x="600" y="274">press → E-stop</text>
+    <text x="536" y="298" font-weight="700" fill="#3c4043">GPIO0</text><text x="600" y="298">press → E-stop</text>
+    <text x="536" y="322" font-weight="700" fill="#1a73e8">GPIO2</text><text x="600" y="322">HIGH = halted</text>
+    <text x="536" y="346" font-weight="700" fill="#9334e6">GPIO1</text><text x="600" y="346">ADC, 0 … 4095</text>
+    <text x="536" y="372" font-size="10" fill="#5f6368">Buttons: active LOW, internal pull-up,</text>
+    <text x="536" y="386" font-size="10" fill="#5f6368">interrupt on both edges (debounce)</text>
+  </g>
+</svg>

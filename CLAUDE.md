@@ -33,7 +33,7 @@ Task 1 wakes Task 2 with a task notification after it formats the buffer. That's
 
 ## Simulator
 
-`diagram.json` + `wokwi.toml` run the built firmware (`build/flasher_args.json`) in the Wokwi VS Code extension (F1 → "Wokwi: Start Simulator"). Rebuild first. In the simulator, the pot stands in for the ADC sensor, and BOOT is an external button on GPIO0. When a pin changes, update `main/main.c` and `diagram.json` together.
+`diagram.json` + `wokwi.toml` run the built firmware (`build/flasher_args.json`) in the Wokwi VS Code extension (F1 → "Wokwi: Start Simulator"). Rebuild first. In the simulator, the pot stands in for the ADC sensor, and BOOT is an external button on GPIO0. When a pin changes, update `main/main.c`, `diagram.json`, `docs/wiring.svg` and the README wiring table together.
 
 Automated test on Wokwi's servers (presses the buttons, turns the pot, checks the serial text and the LED pin). Build first. It needs `wokwi-cli` and `WOKWI_CLI_TOKEN` (from wokwi.com/dashboard/ci) in the environment. Never write the token into a repo file:
 
@@ -42,3 +42,7 @@ wokwi-cli --timeout 30000 --scenario test/wokwi-scenario.yaml .
 ```
 
 Exit code 0 means every step passed, and 42 is a timeout (an expected text never appeared). Wokwi buttons bounce on press and on release. The parts ISR debounces on both edges (see `parts_isr`), so keep that when changing it. In Wokwi the calibrated mV value is wrong (full scale reads ~5090 mV), but the raw value is fine.
+
+## Repo
+
+GitHub repo `eoffers51/Lesson_6_5` (public, `main`, HTTPS remote). The README has the wiring picture, the simulator steps and the test table. Keep the table in step with `test/wokwi-scenario.yaml`. There is no saved online wokwi.com project yet, so the README has no Simulate badge.
