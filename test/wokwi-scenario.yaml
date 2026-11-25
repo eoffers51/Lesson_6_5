@@ -1,0 +1,57 @@
+# Automated Wokwi test of Lesson 6.5 (run with wokwi-cli, see CLAUDE.md)
+name: Lesson 6.5 conveyor test
+version: 1
+
+steps:
+  # 1. Report runs: Task 1 (core 0) formats, Task 2 (core 1) appends
+  - wait-serial: 'parts=0 speed=0/min | [core 1] adc='
+
+  # 2. Three parts on the conveyor (BTN1, slower than the 50 ms debounce)
+  - set-control: { part-id: btn_parts, control: pressed, value: 1 }
+  - delay: 100ms
+  - set-control: { part-id: btn_parts, control: pressed, value: 0 }
+  - delay: 150ms
+  - set-control: { part-id: btn_parts, control: pressed, value: 1 }
+  - delay: 100ms
+  - set-control: { part-id: btn_parts, control: pressed, value: 0 }
+  - delay: 150ms
+  - set-control: { part-id: btn_parts, control: pressed, value: 1 }
+  - delay: 100ms
+  - set-control: { part-id: btn_parts, control: pressed, value: 0 }
+  - wait-serial: 'parts=3'
+
+  # 3. ADC follows the pot (full scale = 4095)
+  - set-control: { part-id: pot, control: position, value: 1 }
+  - wait-serial: 'adc=4095'
+
+  # 4. LED is off before the E-stop
+  - expect-pin: { part-id: led_alarm, pin: A, value: 0 }
+
+  # 5. E-stop: Task 3 wakes, LED on, SYSTEM HALTED!
+  - set-control: { part-id: btn_estop, control: pressed, value: 1 }
+  - wait-serial: 'SYSTEM HALTED! (core'
+  - set-control: { part-id: btn_estop, control: pressed, value: 0 }
+  - delay: 50ms
+  - expect-pin: { part-id: led_alarm, pin: A, value: 1 }
+
+  # 6. Conveyor blocked: 3 more BTN1 presses after the halt must NOT count
+  - delay: 300ms
+  - set-control: { part-id: btn_parts, control: pressed, value: 1 }
+  - delay: 100ms
+  - set-control: { part-id: btn_parts, control: pressed, value: 0 }
+  - delay: 150ms
+  - set-control: { part-id: btn_parts, control: pressed, value: 1 }
+  - delay: 100ms
+  - set-control: { part-id: btn_parts, control: pressed, value: 0 }
+  - delay: 150ms
+  - set-control: { part-id: btn_parts, control: pressed, value: 1 }
+  - delay: 100ms
+  - set-control: { part-id: btn_parts, control: pressed, value: 0 }
+  - delay: 300ms
+
+  # 7. Second E-stop press prints the frozen counter: still 3, not 6
+  - set-control: { part-id: btn_estop, control: pressed, value: 1 }
+  - delay: 100ms
+  - set-control: { part-id: btn_estop, control: pressed, value: 0 }
+  - wait-serial: 'already halted, parts=3'
+  - expect-pin: { part-id: led_alarm, pin: A, value: 1 }

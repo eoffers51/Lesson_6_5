@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "author": "Lesson 6.5",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-s3-devkitc-1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-pushbutton", "id": "btn_parts", "top": 25.8, "left": -97, "attrs": { "color": "green", "label": "BTN1 parts" } },
+    { "type": "wokwi-pushbutton", "id": "btn_estop", "top": 95.4, "left": -97, "attrs": { "color": "red", "label": "BTN2 E-STOP" } },
+    { "type": "wokwi-potentiometer", "id": "pot", "top": -110, "left": 100, "attrs": {} },
+    { "type": "wokwi-resistor", "id": "r_led", "top": 61.7, "left": 130, "attrs": { "value": "220" } },
+    { "type": "wokwi-led", "id": "led_alarm", "top": 25.4, "left": 183.8, "attrs": { "color": "red", "label": "ALARM" } },
+    { "type": "wokwi-pushbutton", "id": "btn_boot", "top": 121.8, "left": 120, "attrs": { "color": "black", "label": "BOOT" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "esp:4", "btn_parts:2.r", "green", [] ],
+    [ "btn_parts:1.l", "esp:GND.1", "black", [ "h-20", "v211.2", "h112", "v-19.4" ] ],
+    [ "esp:5", "btn_estop:2.r", "orange", [ "h-20", "v60" ] ],
+    [ "btn_estop:1.l", "esp:GND.1", "black", [ "h-10", "v141.6", "h102", "v-19.4" ] ],
+
+    [ "pot:GND", "esp:3V3.1", "red", [ "v20", "h-123.9" ] ],
+    [ "pot:SIG", "esp:1", "violet", [] ],
+    [ "pot:VCC", "esp:GND.4", "black", [ "v10", "h80", "v262.1" ] ],
+
+    [ "esp:2", "r_led:1", "blue", [] ],
+    [ "r_led:2", "led_alarm:A", "blue", [] ],
+    [ "led_alarm:C", "esp:GND.4", "black", [ "v163.2" ] ],
+
+    [ "esp:0", "btn_boot:2.l", "gray", [] ],
+    [ "btn_boot:1.l", "esp:GND.4", "black", [ "h-10", "v95.8" ] ]
+  ],
+  "dependencies": {}
+}
